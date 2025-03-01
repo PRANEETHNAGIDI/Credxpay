@@ -1,66 +1,83 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Credxpay
+Credit card based banking website
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Credxpay Documentation
+Table of Contents
+Project Overview
+Features
+Architecture
+User Registration and Login
+Payment Process
+Dealing with Credit Cards
+Security Measures
+Blockchain Integration
+Technical Stack
+Future Enhancements
+Project Overview
+Credxpay is a blockchain-based solution designed for tokenizing credit card information to facilitate secure digital transactions. The platform allows users to register their credit card details and receive a unique "cred ID" for online payments. During transactions, users enter their cred ID, which initiates a payment authorization request through the Credxpay system.
 
-## About Laravel
+Features
+User Registration: Users can create accounts with multiple credit cards, each linked to a unique cred ID.
+Payment Authorization: Users can use their cred ID to authorize payments on participating vendor sites.
+Transaction Dashboard: Users can view completed transactions and remaining balances.
+Two-Step Verification: Enhanced security through personal security questions during registration and login.
+Blockchain Tokenization: Securely tokenizes credit card information for transactions.
+Real-time Notifications: Users receive notifications for payment requests and confirmations.
+Architecture
+Frontend: Built with HTML, CSS, and JavaScript (with Laravel for routing and views).
+Backend: PHP with the Laravel framework for business logic and API endpoints.
+Database: MySQL for storing user information, credit card details, transactions, and security questions.
+Blockchain: Used for generating tokens and securely storing transaction records.
+User Registration and Login
+Registration:
+Users provide personal information, credit card details, and set up multiple security questions.
+Each credit card is associated with a unique cred ID, and all are linked to a single user ID.
+Login:
+Users log in using their credentials and answer a randomly selected security question from their registration list for added security.
+Payment Process
+Initiating Payment: Users enter their cred ID at the vendor's site (e.g., Amazon).
+Payment Request: The vendor's site sends a payment request to the Credxpay system, indicating the amount and user details.
+User Confirmation: Users are notified of the payment request and can confirm or deny the transaction.
+Transaction Processing: Upon confirmation, the transaction is processed using the stored credit card details, and a token is generated for the transaction.
+Transaction Record: The transaction is recorded on the dashboard and securely stored on the blockchain.
+Dealing with Credit Cards
+Adding a Credit Card:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Users can add multiple credit cards during registration or from their profile settings.
+For each card, users enter the card number, expiration date, CVV, and billing address.
+The system generates a unique cred ID for each credit card.
+Storing Credit Card Details:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Credit card information should be securely tokenized. Only the token representing the card is stored in the database.
+Sensitive data (like the card number) is encrypted before storage.
+Using a Credit Card for Transactions:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+When a user initiates a payment, the system retrieves the corresponding credit card token based on the user's selected cred ID.
+The payment processor handles the transaction using the token instead of the actual card details, reducing the risk of exposure.
+Updating or Removing a Credit Card:
 
-## Learning Laravel
+Users can update their credit card details or remove a card from their profile settings.
+The system securely deletes the old card token and replaces it with the updated one.
+Transaction History:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+All transactions using credit cards are logged in the system.
+Users can view their transaction history, which includes transaction amounts, vendor details, and timestamps.
+Security Measures
+Two-Step Verification: Implementing personal questions during registration and at login.
+Tokenization: Credit card information is never stored in plain text; only tokens are used during transactions.
+SSL Encryption: All data exchanged between the user and the server is encrypted using SSL.
+Blockchain Integration
+Token Generation: Each transaction generates a unique token stored on the blockchain.
+Transaction History: The blockchain serves as an immutable ledger, keeping records of all transactions for auditing and security purposes.
+Decentralization: By leveraging blockchain technology, the platform enhances trust and security.
+Technical Stack
+Frontend: HTML, CSS, JavaScript, Vue.js (optional)
+Backend: PHP, Laravel
+Database: MySQL
+Blockchain: Ethereum (or any preferred blockchain platform)
+Hosting: (To be determined based on deployment)
+Future Enhancements
+Mobile App: Developing a mobile version of the platform for easier access.
+Expanded Vendor Partnerships: Collaborating with more e-commerce platforms for broader acceptance.
+Enhanced Security Features: Implementing biometric authentication and advanced fraud detection measures.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
